@@ -40,40 +40,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4H-W0-YO5">
                                 <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeJ-eT-YRk">
-                                <rect key="frame" x="123" y="43.5" width="75" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-5F-vby">
-                                <rect key="frame" x="108.5" y="481.5" width="103.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-zM-1D8">
+                                <rect key="frame" x="147" y="49" width="26" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTb-Ma-ZPF">
+                                <rect key="frame" x="147" y="466" width="26" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="KeJ-eT-YRk" secondAttribute="bottom" constant="-44" id="8hs-oU-ovT"/>
+                            <constraint firstAttribute="centerX" secondItem="sTb-Ma-ZPF" secondAttribute="centerX" id="7HQ-3A-l2m"/>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="Dy9-zM-1D8" secondAttribute="bottom" constant="-59" id="AHQ-Dy-Msq"/>
                             <constraint firstAttribute="centerX" secondItem="CpS-zd-H7Y" secondAttribute="centerX" id="AZc-ZQ-YZc"/>
-                            <constraint firstAttribute="centerX" secondItem="EoI-5F-vby" secondAttribute="centerX" id="Cjw-Am-AgG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j4H-W0-YO5" secondAttribute="trailing" constant="-16" id="YuF-Ae-TYb"/>
-                            <constraint firstAttribute="centerX" secondItem="KeJ-eT-YRk" secondAttribute="centerX" constant="-0.5" id="ZBV-VY-IrW"/>
                             <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" id="f5R-Md-ZCL"/>
+                            <constraint firstAttribute="centerX" secondItem="Dy9-zM-1D8" secondAttribute="centerX" id="fSO-Ng-vjw"/>
                             <constraint firstItem="CpS-zd-H7Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="imd-Fd-W3p"/>
-                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="EoI-5F-vby" secondAttribute="bottom" constant="22" id="oFa-m7-eKe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CpS-zd-H7Y" secondAttribute="trailing" constant="-16" id="qqi-6U-mLJ"/>
                             <constraint firstItem="j4H-W0-YO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="rul-Vm-dew"/>
                             <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="s1b-Jv-Qas"/>
+                            <constraint firstItem="sTb-Ma-ZPF" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" constant="-58" id="txY-Se-k6e"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="CpS-zd-H7Y" secondAttribute="bottom" id="xg1-6g-7dh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomLabel" destination="EoI-5F-vby" id="D7v-E6-uff"/>
+                        <outlet property="bottomTextfield" destination="sTb-Ma-ZPF" id="C8G-22-6RG"/>
                         <outlet property="cameraButton" destination="aaD-p5-x2t" id="MX0-iC-9w2"/>
                         <outlet property="imageViewer" destination="j4H-W0-YO5" id="sIh-Pk-q4A"/>
-                        <outlet property="topLabel" destination="KeJ-eT-YRk" id="Yiw-Sa-Sp3"/>
+                        <outlet property="topTextfield" destination="Dy9-zM-1D8" id="ZIP-oq-v3a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

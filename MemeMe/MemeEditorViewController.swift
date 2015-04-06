@@ -8,14 +8,13 @@
 
 import UIKit
 
-class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var imageViewer: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     
-    @IBOutlet var topLabel: UILabel!
-    @IBOutlet var bottomLabel: UILabel!
-    
+    @IBOutlet var topTextfield: UITextField!
+    @IBOutlet var bottomTextfield: UITextField!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -26,6 +25,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.topTextfield.text = "TOP"
+        self.topTextfield.textAlignment = .Center
+        
+        self.bottomTextfield.text = "BOTTOM"
+        self.bottomTextfield.textAlignment = .Center
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,25 +57,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     
+    // UIImagePickerController Delegate
     
-
-    // MARK: UIImagePickerController Delegate
-    
-
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imageViewer.image = image
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
+    
+    // UITextFieldDelegate
+
     
 }
