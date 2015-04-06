@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CpS-zd-H7Y">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="q3o-pa-TW7"/>
+                                    <barButtonItem systemItem="add" id="Wvb-Oq-afr">
+                                        <color key="tintColor" red="0.48627450980392156" green="0.80392156862745101" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="vXZ-lx-hvc" id="DAH-2j-GLm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="V5l-aQ-uSo"/>
+                                    <barButtonItem systemItem="camera" id="aaD-p5-x2t">
+                                        <color key="tintColor" red="0.48627450979999998" green="0.80392156859999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="i8U-xF-yY2"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4H-W0-YO5">
+                                <rect key="frame" x="6" y="26" width="308" height="492"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="CpS-zd-H7Y" secondAttribute="centerX" id="AZc-ZQ-YZc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j4H-W0-YO5" secondAttribute="trailing" constant="-10" id="YuF-Ae-TYb"/>
+                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" constant="6" id="f5R-Md-ZCL"/>
+                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="imd-Fd-W3p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CpS-zd-H7Y" secondAttribute="trailing" constant="-16" id="qqi-6U-mLJ"/>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="rul-Vm-dew"/>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="6" id="s1b-Jv-Qas"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="CpS-zd-H7Y" secondAttribute="bottom" id="xg1-6g-7dh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageViewer" destination="j4H-W0-YO5" id="sIh-Pk-q4A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="202" y="319"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
