@@ -30,28 +30,50 @@
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="V5l-aQ-uSo"/>
                                     <barButtonItem systemItem="camera" id="aaD-p5-x2t">
                                         <color key="tintColor" red="0.48627450979999998" green="0.80392156859999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="vXZ-lx-hvc" id="3ci-C2-iTY"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="i8U-xF-yY2"/>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4H-W0-YO5">
-                                <rect key="frame" x="6" y="26" width="308" height="492"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeJ-eT-YRk">
+                                <rect key="frame" x="123" y="43.5" width="75" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-5F-vby">
+                                <rect key="frame" x="108.5" y="481.5" width="103.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="KeJ-eT-YRk" secondAttribute="bottom" constant="-44" id="8hs-oU-ovT"/>
                             <constraint firstAttribute="centerX" secondItem="CpS-zd-H7Y" secondAttribute="centerX" id="AZc-ZQ-YZc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="j4H-W0-YO5" secondAttribute="trailing" constant="-10" id="YuF-Ae-TYb"/>
-                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" constant="6" id="f5R-Md-ZCL"/>
+                            <constraint firstAttribute="centerX" secondItem="EoI-5F-vby" secondAttribute="centerX" id="Cjw-Am-AgG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j4H-W0-YO5" secondAttribute="trailing" constant="-16" id="YuF-Ae-TYb"/>
+                            <constraint firstAttribute="centerX" secondItem="KeJ-eT-YRk" secondAttribute="centerX" constant="-0.5" id="ZBV-VY-IrW"/>
+                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" id="f5R-Md-ZCL"/>
                             <constraint firstItem="CpS-zd-H7Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="imd-Fd-W3p"/>
+                            <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="EoI-5F-vby" secondAttribute="bottom" constant="22" id="oFa-m7-eKe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CpS-zd-H7Y" secondAttribute="trailing" constant="-16" id="qqi-6U-mLJ"/>
-                            <constraint firstItem="j4H-W0-YO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="rul-Vm-dew"/>
-                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="6" id="s1b-Jv-Qas"/>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="rul-Vm-dew"/>
+                            <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="s1b-Jv-Qas"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="CpS-zd-H7Y" secondAttribute="bottom" id="xg1-6g-7dh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLabel" destination="EoI-5F-vby" id="D7v-E6-uff"/>
+                        <outlet property="cameraButton" destination="aaD-p5-x2t" id="MX0-iC-9w2"/>
                         <outlet property="imageViewer" destination="j4H-W0-YO5" id="sIh-Pk-q4A"/>
+                        <outlet property="topLabel" destination="KeJ-eT-YRk" id="Yiw-Sa-Sp3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
