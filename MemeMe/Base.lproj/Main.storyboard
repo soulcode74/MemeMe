@@ -40,27 +40,46 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4H-W0-YO5">
                                 <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-zM-1D8">
-                                <rect key="frame" x="147" y="49" width="26" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-zM-1D8">
+                                <rect key="frame" x="16" y="49" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="4Kd-6n-za1"/>
+                                    <constraint firstAttribute="height" constant="30" id="aO1-i3-b9v"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="bA8-Wn-LHS"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTb-Ma-ZPF">
-                                <rect key="frame" x="147" y="466" width="26" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTb-Ma-ZPF">
+                                <rect key="frame" x="16" y="466" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="ExT-kX-qOA"/>
+                                    <constraint firstAttribute="height" constant="30" id="p2b-pq-ytI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="UPf-xj-gr5"/>
+                                </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.19604039192199707" green="0.19601953029632568" blue="0.2001308798789978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="sTb-Ma-ZPF" secondAttribute="centerX" id="7HQ-3A-l2m"/>
                             <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="Dy9-zM-1D8" secondAttribute="bottom" constant="-59" id="AHQ-Dy-Msq"/>
                             <constraint firstAttribute="centerX" secondItem="CpS-zd-H7Y" secondAttribute="centerX" id="AZc-ZQ-YZc"/>
+                            <constraint firstItem="Dy9-zM-1D8" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="I6n-Sx-eek"/>
+                            <constraint firstItem="sTb-Ma-ZPF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="O5S-sb-TjZ"/>
+                            <constraint firstItem="Dy9-zM-1D8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="SdZ-dx-KXO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j4H-W0-YO5" secondAttribute="trailing" constant="-16" id="YuF-Ae-TYb"/>
                             <constraint firstItem="CpS-zd-H7Y" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" id="f5R-Md-ZCL"/>
                             <constraint firstAttribute="centerX" secondItem="Dy9-zM-1D8" secondAttribute="centerX" id="fSO-Ng-vjw"/>
                             <constraint firstItem="CpS-zd-H7Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="imd-Fd-W3p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CpS-zd-H7Y" secondAttribute="trailing" constant="-16" id="qqi-6U-mLJ"/>
+                            <constraint firstItem="sTb-Ma-ZPF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="rFN-Mk-Ubs"/>
                             <constraint firstItem="j4H-W0-YO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="rul-Vm-dew"/>
                             <constraint firstItem="j4H-W0-YO5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="s1b-Jv-Qas"/>
                             <constraint firstItem="sTb-Ma-ZPF" firstAttribute="top" secondItem="j4H-W0-YO5" secondAttribute="bottom" constant="-58" id="txY-Se-k6e"/>
