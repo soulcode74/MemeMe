@@ -13,7 +13,7 @@
 import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+    
     @IBOutlet var imageViewer: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     
@@ -24,7 +24,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet var bottomTextfield: UITextField!
     
     @IBOutlet var shareButton: UIBarButtonItem!
-
+    
     
     let defaultTopText = "TOP"
     let defaultBottomText = "BOTTOM"
@@ -34,15 +34,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
-
+        
     ]
-    
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
     
+    // MARK: - ViewController LifeCycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,6 +58,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.subscribeToKeyboardNotifications()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,32 +70,38 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.bottomTextfield.defaultTextAttributes = self.memeTextAttributes
         self.bottomTextfield.textAlignment = .Center
         
-        
     }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Unsubscribe to keyboard notifications
         self.unsubscribeToKeyboardNotifications()
+        
     }
-
-
+    
+    // MARK: - Actions
+    
     // Pick image from Photo Album
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+        
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePickerController, animated: true, completion: nil)
+        
     }
     
     
     // Pick image from camera (Take a picture)
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
+        
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
         self.presentViewController(imagePickerController, animated: true, completion: nil)
+        
     }
     
     
@@ -106,51 +113,78 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Define an instance of ActivityViewController and pass memedImage
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
-        self.presentViewController(activityViewController, animated: true, completion: save)
+        save()
         
+        self.presentViewController(activityViewController, animated: true, completion: parentViewController?.dismissViewControllerAnimated(<#flag: Bool#>, completion: <#(() -> Void)?##() -> Void#>))
         
     }
     
-    // UIImagePickerController Delegate
+    
+    @IBAction func cancel(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
+    
+    // MARK: - UIImagePickerController Delegate
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imageViewer.image = image
         }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     
-    // UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
+    
     func textFieldDidBeginEditing(textField: UITextField) {
+        
         // Clear text field only if it is different of default text
         if textField.text == defaultTopText || textField.text == defaultBottomText {
             textField.text = ""
         }
+        
     }
     
-    
+    // When the user tap on return on the keyboard
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // registe to the keyboard notification
+        
+        // register to the keyboard notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
+        // reasign the first responder to the parent view
         textField.resignFirstResponder()
         
         return true
     }
     
+    // MARK: - Keyboard settings
+    
     // Move the view when the keyboard covers the text field
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        
+        // Move the view only if the bottom text field is in mode edit
+        if bottomTextfield.editing {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     
     // Move the view back down when the keyboard is dismissed
     func keyboardWillHide(notification: NSNotification) {
+        
         self.view.frame.origin.y = 0.0
     }
     
@@ -166,14 +200,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
     
+    
     func unsubscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
-
+    
+    
+    
+    // MARK: - Methods
     
     // Generated Meme Object
     func save() {
-        
         // Create a meme
         let meme = Meme(
             topText: topTextfield.text!,
@@ -182,10 +219,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             memedImage:  generateMemedImage())
         
         // Add it to meme array in the app delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.memes.append(meme)
+        
     }
+    
     
     func generateMemedImage() -> UIImage {
         // Hide the toolbar and navbar
@@ -204,5 +242,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         return memedImage
     }
+    
 
 }

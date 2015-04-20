@@ -12,12 +12,12 @@ import UIKit
 struct Meme {
     
     // Original elements of meme
-    var topText: String
-    var bottomText: String
-    var image: UIImage
+    var topText: String?
+    var bottomText: String?
+    var image: UIImage?
     
     // Combine texts and image
-    var memedImage: UIImage
+    var memedImage: UIImage?
     
     // Default initialization
     init(topText: String, bottomText: String, image: UIImage, memedImage: UIImage) {
@@ -27,5 +27,4 @@ struct Meme {
         self.memedImage = memedImage
         
     }
-    
 }
