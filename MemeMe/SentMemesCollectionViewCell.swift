@@ -10,10 +10,6 @@ import UIKit
 
 class SentMemesCollectionViewCell: UICollectionViewCell {
     
-
-    @IBOutlet var originalImage: UIImageView!
-    
-    @IBOutlet var topText: UILabel!
-    
+    @IBOutlet var memedImage: UIImageView!
     
 }

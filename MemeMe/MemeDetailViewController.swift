@@ -15,14 +15,12 @@ class MemeDetailViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         imageView.image = passedImage
     
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

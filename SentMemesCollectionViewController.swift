@@ -41,11 +41,11 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDeleg
 
         let meme = memes[indexPath.item]
         
-        cell.originalImage.image = meme.image
-        cell.topText.text = meme.topText
-        
+        cell.memedImage.image = meme.memedImage
+    
         return cell
     }
+    
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

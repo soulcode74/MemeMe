@@ -7,9 +7,6 @@
 //
 
 
-
-// TODO: Dismiss the Activity View. Finally, after the Meme object has been saved the activity view should be dismissed. You can also call the dismissViewControllerAnimated method in the completion handler.
-
 import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
@@ -24,6 +21,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet var bottomTextfield: UITextField!
     
     @IBOutlet var shareButton: UIBarButtonItem!
+    @IBOutlet var cancelButton: UIBarButtonItem!
     
     
     let defaultTopText = "TOP"
@@ -53,9 +51,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Enable the share button if an image is available
         shareButton.enabled = (imageViewer.image != nil)
         
-        
         // Subscribe to keyboard notifications, to allow the view to raise when necessary
         self.subscribeToKeyboardNotifications()
+        
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        cancelButton.enabled = appDelegate.memes.count > 0
+        
     }
     
     
@@ -113,19 +116,28 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Define an instance of ActivityViewController and pass memedImage
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
-        save()
+        // A completion handler to execute after the activity view controller is dismissed
+        func saveMemeAfterSharing(activity: String!, completed: Bool, items: [AnyObject]!, error: NSError!) {
+            if completed {
+                self.save()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
         
-        self.presentViewController(activityViewController, animated: true, completion: parentViewController?.dismissViewControllerAnimated(<#flag: Bool#>, completion: <#(() -> Void)?##() -> Void#>))
+        // Call the function above when complete the activty
+        activityViewController.completionWithItemsHandler = saveMemeAfterSharing
+        
+        // Present the ActivityViewController
+        self.presentViewController(activityViewController, animated: true, completion: nil)
         
     }
     
     
     @IBAction func cancel(sender: AnyObject) {
-        
+
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
-    
     
     
     // MARK: - UIImagePickerController Delegate

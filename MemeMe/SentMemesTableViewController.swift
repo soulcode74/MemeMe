@@ -22,10 +22,19 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         memes = appDelegate.memes
         
+
+        if (memes.count == 0) {
+            let memeEditorViewController = self.storyboard?.instantiateViewControllerWithIdentifier("memeEditorViewController") as! MemeEditorViewController
+            self.presentViewController(memeEditorViewController, animated: true, completion: nil)
+            
+        }
+        
+                                
+        // Reload the data
         self.tableView.reloadData()
         
     }
-
+    
 
     // MARK: TableView Delegate and DataSource
     
@@ -43,7 +52,7 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.topText.text = meme.topText
         cell.bottomText.text = meme.bottomText
-        cell.originalImage.image = meme.image
+        cell.originalImage.image = meme.memedImage
         
         return cell
         
